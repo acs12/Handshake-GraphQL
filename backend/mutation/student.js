@@ -5,27 +5,48 @@ const jwt = require('jsonwebtoken');
 const { secret } = require('../config');
 
 const updateStudent = async (args) => {
-    let student = await Student.updateOne({ _id: args.id }, {
-        $set: {
-            name: args.name,
-            dateOfBirth: args.dateOfBirth,
-            address: args.address,
-            city: args.city,
-            state: args.state,
-            country: args.country,
-            phoneNumber: args.phoneNumber,
-            gradDate: args.gradDate,
-            major: args.major,
-            careerObjective: args.careerObjective,
+    console.log("args", args)
+    if (args.careerObjective) {
+        let student = await Student.updateOne({ _id: args.id }, {
+            $set: {
+                careerObjective: args.careerObjective,
+            }
+        });
+        if (student) {
+            return { status: 200, message: "Success" };
         }
-    });
-    const payload = { student: student };
-    var token = jwt.sign(payload, secret, {
-        expiresIn: 1008000
-    });
-    token = 'JWT ' + token;
-    return { status: 200, message: token };
+    }
+    else if (args.phoneNumber) {
+        let student = await Student.updateOne({ _id: args.id }, {
+            $set: {
+                email: args.email,
+                phoneNumber: args.phoneNumber,
+            }
+        });
+        if (student) {
+            return { status: 200, message: "Success" };
+        }
+    }
+    else {
+        let student = await Student.updateOne({ _id: args.id }, {
+            $set: {
+                name: args.name,
+                dateOfBirth: args.dateOfBirth,
+                address: args.address,
+                city: args.city,
+                state: args.state,
+                country: args.country,
+                gradDate: args.gradDate,
+                major: args.major,
+            }
+        });
+        if (student) {
+            return { status: 200, message: "Success" };
+        }
+    }
+
 }
+
 
 const updateEducation = async (args) => {
     let education = await Student.updateOne({ _id: args.id }, {
@@ -40,12 +61,9 @@ const updateEducation = async (args) => {
             }
         }
     });
-    const payload = { education: education };
-    var token = jwt.sign(payload, secret, {
-        expiresIn: 1008000
-    });
-    token = 'JWT ' + token;
-    return { status: 200, message: token };
+    if (education) {
+        return { status: 200, message: "success" };
+    }
 }
 
 const updateExperience = async (args) => {
@@ -62,32 +80,30 @@ const updateExperience = async (args) => {
             }
         }
     });
-    const payload = { experience: experience };
-    var token = jwt.sign(payload, secret, {
-        expiresIn: 1008000
-    });
-    token = 'JWT ' + token;
-    return { status: 200, message: token };
+    if (experience) {
+        return { status: 200, message: "success" };
+    }
 }
 
 const ApplyToJob = async (args) => {
+    console.log(args)
     let apply = await Jobs.updateOne({ _id: args.jobId }, {
         $push: {
             application: {
-                studentId : args.studentId,
-                status : "pending",
-                applicationDate : Date.now()
+                studentId: args.studentId,
+                status: "pending",
+                applicationDate: Date.now()
             }
         }
     });
-    
-    console.log("Apply",apply)
+
+    console.log("Apply", apply)
     const payload = { apply: apply };
     var token = jwt.sign(payload, secret, {
         expiresIn: 1008000
     });
     token = 'JWT ' + token;
-    return { status: 200, message: "success" };
+    return { status: 200, message: "Applied Successfully" };
 }
 
 exports.updateEducation = updateEducation;

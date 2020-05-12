@@ -24,6 +24,7 @@ const StudentType = new GraphQLObjectType({
     id: { type: GraphQLID },
     name: { type: GraphQLString },
     email: { type: GraphQLString },
+    schoolName : {type :GraphQLString},
     password: { type: GraphQLString },
     dateOfBirth: { type: GraphQLString },
     address: { type: GraphQLString },
@@ -85,7 +86,7 @@ const JobType = new GraphQLObjectType({
   name: 'Job',
   fields: () => ({
     _id: { type: GraphQLID },
-    companyId: { type: GraphQLID },
+    companyId: { type: companyType },
     title: { type: GraphQLString },
     location: { type: GraphQLString },
     postedDate: { type: GraphQLString },
@@ -104,6 +105,33 @@ const JobType = new GraphQLObjectType({
   })
 });
 
+const CompanyJobType = new GraphQLObjectType({
+  name: 'CompanyJobType',
+  fields: () => ({
+    _id: { type: GraphQLID },
+    // student : {type : StudentType},
+    companyId: { type: GraphQLID },
+    title: { type: GraphQLString },
+    location: { type: GraphQLString },
+    postedDate: { type: GraphQLString },
+    deadlineDate: { type: GraphQLString },
+    salary: { type: GraphQLInt },
+    description: { type: GraphQLString },
+    category: { type: GraphQLString },
+    application: { type: GraphQLList(CompanyApplicationType) }
+  })
+});
+
+
+
+const CompanyApplicationType = new GraphQLObjectType({
+  name: 'CompanyApplication',
+  fields: () => ({
+    studentId: { type: StudentType },
+    applicationDate: { type: GraphQLString }
+  })
+})
+
 
 const applicationType = new GraphQLObjectType({
   name: 'Application',
@@ -117,6 +145,7 @@ const Response = new GraphQLObjectType({
   name: 'Status',
   fields: () => ({
     StudentObj: { type: GraphQLList(StudentType) },
+    CompanyJobObj : {type : GraphQLList(CompanyJobType)},
     JobObj: { type: GraphQLList(JobType) },
     status: { type: GraphQLString },
     message: { type: GraphQLString }
@@ -133,6 +162,7 @@ const RootQuery = new GraphQLObjectType({
       async resolve(parent, args) {
         let stud = await Student.findById({ _id: args.id });
         if (stud) {
+          console.log(stud)
           return stud;
         }
       }
@@ -165,13 +195,14 @@ const RootQuery = new GraphQLObjectType({
       },
       async resolve(parent, args) {
         if (args.companyId) {
-          let jobs = await Jobs.find({ companyId: args.companyId });
+          console.log("company id", args.companyId)
+          let jobs = await Jobs.find({ companyId: args.companyId }).populate("application.studentId");
           if (jobs) {
-            return { status: 200, JobObj: jobs };
+            return { status: 200, CompanyJobObj: jobs };
           }
         }
         else {
-          let jobs = await Jobs.find({ "application.studentId": { $ne: args.id } });
+          let jobs = await Jobs.find({ "application.studentId": { $ne: args.id } }).populate("companyId");
           if (jobs) {
             return { status: 200, JobObj: jobs };
           }
@@ -182,7 +213,7 @@ const RootQuery = new GraphQLObjectType({
       type: Response,
       args: { id: { type: GraphQLString } },
       async resolve(parent, args) {
-        let jobs = await Jobs.find({ "application.studentId": { $in: args.id } });
+        let jobs = await Jobs.find({ "application.studentId": { $in: args.id } }).populate("companyId");
         if (jobs) {
           return { status: 200, JobObj: jobs };
         }
@@ -223,6 +254,7 @@ const Mutation = new GraphQLObjectType({
       args: {
         email: { type: GraphQLString },
         password: { type: GraphQLString },
+        schoolName : {type: GraphQLString}
       },
       resolve(parent, args) {
         return login(args);
@@ -241,7 +273,7 @@ const Mutation = new GraphQLObjectType({
     CompanyUpdate: {
       type: Response,
       args: {
-        id: { type: GraphQLID },
+        id: { type: GraphQLString },
         name: { type: GraphQLString },
         email: { type: GraphQLString },
         location: { type: GraphQLString },
@@ -256,12 +288,12 @@ const Mutation = new GraphQLObjectType({
       type: Response,
       args: {
         // id: { type: GraphQLID },
-        companyId: { type: GraphQLID },
+        companyId: { type: GraphQLString },
         title: { type: GraphQLString },
         location: { type: GraphQLString },
         postedDate: { type: GraphQLString },
         deadlineDate: { type: GraphQLString },
-        salary: { type: GraphQLInt },
+        salary: { type: GraphQLString },
         description: { type: GraphQLString },
         category: { type: GraphQLString },
       },
@@ -272,13 +304,14 @@ const Mutation = new GraphQLObjectType({
     StudentUpdate: {
       type: Response,
       args: {
-        id: { type: GraphQLID },
+        id: { type: GraphQLString },
         name: { type: GraphQLString },
         dateOfBirth: { type: GraphQLString },
         address: { type: GraphQLString },
         city: { type: GraphQLString },
         state: { type: GraphQLString },
         country: { type: GraphQLString },
+        email : {type : GraphQLString},
         phoneNumber: { type: GraphQLString },
         gradDate: { type: GraphQLString },
         major: { type: GraphQLString },
@@ -291,12 +324,12 @@ const Mutation = new GraphQLObjectType({
     EducationUpdate: {
       type: Response,
       args: {
-        id: { type: GraphQLID },
+        id: { type: GraphQLString },
         collegeName: { type: GraphQLString },
         educationLocation: { type: GraphQLString },
         degree: { type: GraphQLString },
         major: { type: GraphQLString },
-        yearOfPassing: { type: GraphQLInt },
+        yearOfPassing: { type: GraphQLString },
         cgpa: { type: GraphQLString },
       },
       resolve(parent, args) {
@@ -306,7 +339,7 @@ const Mutation = new GraphQLObjectType({
     ExperienceUpdate: {
       type: Response,
       args: {
-        id: { type: GraphQLID },
+        id: { type: GraphQLString },
         companyName: { type: GraphQLString },
         companyLocation: { type: GraphQLString },
         title: { type: GraphQLString },
@@ -321,8 +354,8 @@ const Mutation = new GraphQLObjectType({
     ApplyToJob: {
       type: Response,
       args: {
-        jobId: { type: GraphQLID },
-        studentId: { type: GraphQLID },
+        jobId: { type: GraphQLString },
+        studentId: { type: GraphQLString },
       },
       resolve(parent, args) {
         return ApplyToJob(args);

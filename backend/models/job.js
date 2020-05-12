@@ -9,8 +9,8 @@ const jobSchema = mongoose.Schema({
     companyId: { type: ObjectId, ref: "Company" },
     title: { type: String, required: true },
     location: String,
-    postedDate: Date,
-    deadlineDate: Date,
+    postedDate: String,
+    deadlineDate: String,
     salary: Number,
     description: String,
     category: String,
@@ -18,7 +18,7 @@ const jobSchema = mongoose.Schema({
         {
             studentId: { type: ObjectId, ref: "Student" },
             status: String,
-            applicationDate : Date
+            applicationDate : String
         }
     ]
 })

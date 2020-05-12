@@ -12,14 +12,14 @@ const studentSignup = async (args) => {
     });
     let student = await Student.find({ email: args.email });
     if (student.length) {
-        return { status: 400, message: "Student already Exists" };
+        return { status: 400, message: "Student_Already_Exists" };
     }
     let result = await newStudent.save();
     if (result) {
-        return { status: 200, message: "Student Successfully Signed Up" };
+        return { status: 200, message: "Student_Successfully_Signed_Up" };
     }
     else {
-        return { status: 500, message: "Internal Server Error" };
+        return { status: 500, message: "Internal_Server_Error" };
     }
 };
 
@@ -35,14 +35,14 @@ const companySignup = async (args) => {
 
     let company = await Company.find({ email: args.email });
     if (company.length) {
-        return { status: 400, message: "Company Already Registered" };
+        return { status: 400, message: "Company_Already_Registered" };
     }
     let result = await newCompany.save();
     if (result) {
-        return { status: 200, message: "Company Added" };
+        return { status: 200, message: "Company_Added" };
     }
     else {
-        return { status: 500, message: "Internal Server Error" };
+        return { status: 500, message: "Internal_Server_Error" };
     }
 };
 
