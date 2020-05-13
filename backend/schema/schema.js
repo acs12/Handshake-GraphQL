@@ -191,7 +191,9 @@ const RootQuery = new GraphQLObjectType({
       type: Response,
       args: {
         id: { type: GraphQLString },
-        companyId: { type: GraphQLString }
+        companyId: { type: GraphQLString },
+        title : {type : GraphQLString},
+        companyName : {type : GraphQLString}
       },
       async resolve(parent, args) {
         if (args.companyId) {
@@ -201,8 +203,14 @@ const RootQuery = new GraphQLObjectType({
             return { status: 200, CompanyJobObj: jobs };
           }
         }
+        else if(args.title) {
+          let jobs = await Jobs.find({ "application.studentId": { $ne: args.id }, title : args.title }).populate("companyId");
+          if (jobs) {
+            return { status: 200, JobObj: jobs };
+          }
+        }
         else {
-          let jobs = await Jobs.find({ "application.studentId": { $ne: args.id } }).populate("companyId");
+          let jobs = await Jobs.find({ "application.studentId": { $ne: args.id }}).populate("companyId");
           if (jobs) {
             return { status: 200, JobObj: jobs };
           }

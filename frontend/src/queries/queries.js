@@ -1,8 +1,8 @@
 import { gql } from 'apollo-boost';
 
 const QueryAllJobs = gql`
-    query($id: String, $companyId : String){
-        AllJobs(id: $id, companyId : $companyId) {
+    query($id: String, $companyId : String, $title : String, $companyName : String){
+        AllJobs(id: $id, companyId : $companyId, title : $title, companyName : $companyName) {
             status
             CompanyJobObj{
               _id
