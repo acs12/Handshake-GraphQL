@@ -3,9 +3,6 @@ import { Link } from 'react-router-dom';
 import { MDBContainer, MDBCol } from "mdbreact";
 import { Redirect } from 'react-router';
 
-
-// import {Redirect} from 'react-router';
-
 //create the Navbar Component
 class Navbar extends Component {
     constructor(props) {
@@ -92,10 +89,6 @@ class Navbar extends Component {
                         <MDBCol >
                             <Link to="../Company/CompanyProfile">Profile</Link>
                         </MDBCol>
-                        {/* <MDBCol >
-                            <Link to="../Message">Message</Link>
-                        </MDBCol> */}
-
                         <MDBCol >
                             <div className="nav navbar-nav navbar-right">
                                 {navLogin}

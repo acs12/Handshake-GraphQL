@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import '../../App.css';
-import axios from 'axios';
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import AllStudent from './AllStudent'
 import { graphql, compose } from 'react-apollo';
@@ -8,7 +7,7 @@ import { QueryAllStudents } from '../../queries/queries';
 import { Redirect } from 'react-router';
 
 
-//Define a Login Component
+//Define a Component
 class ViewStudents extends Component {
     //call the constructor method
     constructor(props) {
@@ -17,7 +16,6 @@ class ViewStudents extends Component {
         //maintain the state required for this component
         this.state = {
             getStudents: [],
-            // skillsData: [],
             filteredStudents: [],
             filteredSearch: 0,
             currentPage: 1,
@@ -25,25 +23,9 @@ class ViewStudents extends Component {
             flag: false
         }
         //Bind the handlers to this class
-        // this.changeMajorStatus = this.changeMajorStatus.bind(this)
         this.studentSearch = this.studentSearch.bind(this)
-        // this.companySearch = this.companySearch.bind(this)
 
     }
-
-    // componentDidMount = async (e) => {
-    //     // e.preventDefault();
-    //     //set the with credentials to true
-    //     axios.defaults.withCredentials = true;
-    //     //make a post request with the user data
-    //     await this.props.allStudents(null, res => {
-    //         console.log(res)
-    //         this.setState({
-    //             getStudents: res.data
-    //         })
-    //     })
-    //     // this.componentWillReceiveProps()
-    // }
 
     handleClick(e) {
         console.log(e)
@@ -51,42 +33,6 @@ class ViewStudents extends Component {
             currentPage: Number(e)
         });
     }
-
-    // companySearch = (e) => {
-    //     let filteredSearchStudents = this.state.getStudents;
-    //     console.log("Filtered Search Students", filteredSearchStudents)
-    //     if (e.target.value) {
-    //         this.setState({
-    //             filteredSearch: 1,
-    //             filteredStudents: filteredSearchStudents.filter((s) => {
-    //                 console.log("Skill", s.skills)
-    //                 let skillsArray = ""
-    //                 for (let i = 0; i < s.skills.length; i++) {
-    //                     let oneSkill = s.skills[i].skillName
-    //                     console.log(s.skills[i].skillName)
-    //                     if (i == s.skills.length - 1) {
-    //                         skillsArray = skillsArray.concat(oneSkill)
-    //                         console.log("For", skillsArray)
-    //                     }
-    //                     else {
-    //                         skillsArray = skillsArray.concat(oneSkill + ",")
-    //                         console.log("For", skillsArray)
-    //                     }
-    //                 }
-    //                 return (
-    //                     s.name.replace(/\s+/g, '').toLowerCase().includes(e.target.value.replace(/\s+/g, '').toLowerCase()) ||
-    //                     s.schoolName.replace(/\s+/g, '').toLowerCase().includes(e.target.value.replace(/\s+/g, '').toLowerCase()) ||
-    //                     skillsArray.replace(/\s+/g, '').toLowerCase().includes(e.target.value.replace(/\s+/g, '').toLowerCase()))
-    //             }
-    //             )
-    //         })
-    //     }
-    //     else {
-    //         this.setState({
-    //             filteredSearch: 0
-    //         })
-    //     }
-    // }
 
     studentSearch = (e) => {
         let filteredSearchStudents = this.state.getStudents;
@@ -195,5 +141,6 @@ class ViewStudents extends Component {
 }
 
 
-//export Login Component
+//export Component
+
 export default graphql(QueryAllStudents)(ViewStudents);

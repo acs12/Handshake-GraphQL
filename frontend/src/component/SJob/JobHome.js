@@ -7,12 +7,11 @@ import { Redirect } from 'react-router';
 
 
 
-//Define a Login Component
+//Define a Component
 class JobHome extends Component {
 
 
     render() {
-        // let response = this.state.response
         let redirectVar = null;
         if (!localStorage.getItem("token")) {
             redirectVar = <Redirect to="/StudentLogin" />
@@ -32,5 +31,6 @@ class JobHome extends Component {
         )
     }
 }
-//export Login Component
+//export Component
+
 export default JobHome;

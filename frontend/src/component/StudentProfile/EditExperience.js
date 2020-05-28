@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import '../../App.css';
-import axios from 'axios';
-import { updateExperience, deleteExperience } from '../../redux'
-import { connect } from 'react-redux'
 import { Redirect } from 'react-router';
 
-//Define a Login Component
+//Define a Component
 class EditExperience extends Component {
     //call the constructor method
     constructor(props) {
@@ -30,17 +27,6 @@ class EditExperience extends Component {
         this.changeExistingExperience = this.changeExistingExperience.bind(this)
         this.updateExistingExperience = this.updateExistingExperience.bind(this)
     }
-
-    // componentDidMount = () => {
-    //     let sDate = String(this.props.item.startDate)
-    //     let eDate = String(this.props.item.endDate)
-    //     sDate = sDate.slice(0, 10)
-    //     eDate = eDate.slice(0, 10)
-    //     this.setState({
-    //         startDate: sDate,
-    //         endDate: eDate
-    //     })
-    // }
 
     //username change handler to update state variable with the text entered by the user
     changeHandler = (e) => {
@@ -222,5 +208,6 @@ class EditExperience extends Component {
         )
     }
 }
-//export Login Component
+//export Component
+
 export default connect(null, { updateExperience, deleteExperience })(EditExperience);

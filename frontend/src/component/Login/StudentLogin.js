@@ -11,7 +11,7 @@ const jwt_decode = require('jwt-decode');
 
 
 
-//Define a Login Component
+//Define a Component
 class StudentLogin extends Component {
     //call the constructor method
     constructor(props) {
@@ -133,7 +133,6 @@ class StudentLogin extends Component {
                                     className="form-control"
                                     name="email"
                                     placeholder="email"
-                                    // pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                                     required
                                 />
                             </div>
@@ -178,5 +177,6 @@ class StudentLogin extends Component {
 
 
 
-//export Login Component
+//export Component
+
 export default graphql(StudentLoginMutation, { name: "StudentLoginMutation" })(StudentLogin);

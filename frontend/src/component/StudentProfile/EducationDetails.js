@@ -6,7 +6,7 @@ import { updateEducationMutation } from '../../mutation/mutation';
 import { QueryGetStudent } from '../../queries/queries';
 // import EditEducation from './EditEducation';
 
-//Define a Login Component
+//Define a Component
 class EducationDetails extends Component {
     //call the constructor method
     constructor(props) {
@@ -23,7 +23,6 @@ class EducationDetails extends Component {
             major: "",
             yearOfPassing: "",
             cgpa: "",
-            // response: ""
         }
         //Bind the handlers to this class
         this.changeHandler = this.changeHandler.bind(this);
@@ -31,12 +30,6 @@ class EducationDetails extends Component {
         this.changeEduDetailsStatus = this.changeEduDetailsStatus.bind(this)
     }
 
-    // componentDidUpdate(prevProps, prevState) {
-    //     console.log("EDUCATION : componentDidUpdate CALLED")
-    //     if (prevProps.education !== this.props.education) {
-    //         this.setState({ getEduDetails: this.props.education })
-    //     }
-    // }
     //username change handler to update state variable with the text entered by the user
     changeHandler = (e) => {
         this.setState({
@@ -47,15 +40,6 @@ class EducationDetails extends Component {
     //submit Login handler to send a request to the node backend
     submitEducationDetails = async (e) => {
         e.preventDefault()
-        // let EducationDetails = {
-        //     _id: this.state.id,
-        //     collegeName: this.state.collegeName,
-        //     educationLocation: this.state.location,
-        //     degree: this.state.degree,
-        //     major: this.state.major,
-        //     yearOfPassing: this.state.yearOfPassing,
-        //     cgpa: this.state.cgpa,
-        // }
 
         let update = await this.props.updateEducationMutation({
             variables: {
@@ -110,7 +94,6 @@ class EducationDetails extends Component {
                 <b> Education : </b>
                 <div className="card" >
                     <div className="card-body">
-                        {/* <button type="button" className="btn btn-danger" style={{ float: "right" }} onClick={this.delete}>Delete</button> */}
                         <h5 className="card-title">School : {res.collegeName}</h5>
                         <h6 className="card-subtitle mb-2 text-muted"> Location: {res.educationLocation}</h6>
                         <h6 className="card-subtitle mb-2 text-muted">Degree : {res.degree}</h6>
@@ -216,7 +199,8 @@ class EducationDetails extends Component {
     }
 }
 
-//export Login Component
+//export Component
+
 export default compose(graphql(QueryGetStudent, {
     options: {
         variables: { id: localStorage.getItem("id") }

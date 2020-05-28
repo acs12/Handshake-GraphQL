@@ -6,7 +6,7 @@ import { QueryGetStudent } from '../../queries/queries';
 import { Redirect } from 'react-router';
 
 
-//Define a Login Component
+//Define a Component
 class CareerObjective extends Component {
     //call the constructor method
     constructor(props) {
@@ -104,7 +104,8 @@ class CareerObjective extends Component {
     }
 }
 
-//export Login Component
+//export Component
+
 export default compose(graphql(QueryGetStudent, {
     options: {
         variables: { id: localStorage.getItem("id") }

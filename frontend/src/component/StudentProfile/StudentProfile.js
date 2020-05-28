@@ -7,7 +7,7 @@ import { QueryGetStudent } from '../../queries/queries';
 
 
 
-//Define a Login Component
+//Define a Component
 class StudentProfile extends Component {
     //call the constructor method
     constructor(props) {
@@ -17,7 +17,6 @@ class StudentProfile extends Component {
         this.state = {
             id: localStorage.getItem("id"),
             studentDetailsStatus: false,
-            // profilePicUrl: "",
             name: "",
             dateOfBirth: "",
             address: "",
@@ -33,21 +32,9 @@ class StudentProfile extends Component {
         }
         //Bind the handlers to this class
         this.changeHandler = this.changeHandler.bind(this)
-        // this.changeHandlerImg = this.changeHandlerImg.bind(this)
         this.changeStudentDetailsStatus = this.changeStudentDetailsStatus.bind(this)
         this.updateStudentDetails = this.updateStudentDetails.bind(this)
     }
-
-
-    // componentDidMount = () =>{
-    //     if (this.props.data.Student ) {
-    //         let res = this.props.data.Student
-    //         this.setState({
-    //             data: res,
-    //             flag: true
-    //         })
-    //     }
-    // }
 
     changeHandler = (e) => {
         this.setState({
@@ -89,7 +76,6 @@ class StudentProfile extends Component {
             this.setState({
                 studentDetailsStatus : !this.state.studentDetailsStatus,
                 flag : false
-                // data : this.props.data.Student
             })
         }
     }
@@ -104,10 +90,6 @@ class StudentProfile extends Component {
             console.log('Updating')
             res = this.props.data.Student
             console.log('Updating',res)
-            // this.setState({
-            //     data: res,
-            //     flag: true
-            // })
         }
         
         console.log("Profile pic url", this.state.profilePicUrl)
@@ -151,7 +133,6 @@ class StudentProfile extends Component {
                                 className="form-control"
                                 name="name"
                                 placeholder="Enter Name"
-                                // value={this.state.data.name}
                                 required
                             />
                         </div>
@@ -163,7 +144,6 @@ class StudentProfile extends Component {
                                 type="date"
                                 className="form-control"
                                 name="dateOfBirth"
-                                // value={this.state.data.dateOfBirth}
                                 placeholder="dateOfBirth"
                                 required
                             />
@@ -175,7 +155,6 @@ class StudentProfile extends Component {
                                 type="text"
                                 className="form-control"
                                 name="address"
-                                // value={this.state.data.address}
                                 placeholder="Enter Street Address"
                             />
                         </div>
@@ -186,7 +165,6 @@ class StudentProfile extends Component {
                                 type="text"
                                 className="form-control"
                                 name="city"
-                                // value={this.state.data.city}
                                 placeholder="Enter City"
                             />
                         </div>
@@ -196,7 +174,6 @@ class StudentProfile extends Component {
                                 type="text"
                                 className="form-control"
                                 name="state"
-                                // value={this.state.data.state}
                                 placeholder="Enter State"
                             />
                         </div>
@@ -207,7 +184,6 @@ class StudentProfile extends Component {
                                 type="text"
                                 className="form-control"
                                 name="country"
-                                // value={this.state.data.country}
                                 placeholder="Enter Country"
                             />
                         </div>
@@ -219,7 +195,6 @@ class StudentProfile extends Component {
                                 type="date"
                                 className="form-control"
                                 name="gradDate"
-                                // value={this.state.data.gradDate}
                                 placeholder="Enter Graduation Date"
                                 required
                             />
@@ -231,7 +206,6 @@ class StudentProfile extends Component {
                                 type="text"
                                 className="form-control"
                                 name="major"
-                                // value={this.state.data.major}
                                 placeholder="Enter Your Major"
                                 required
                             />
@@ -253,7 +227,8 @@ class StudentProfile extends Component {
 }
 
 
-//export Login Component
+//export Component
+
 export default compose(graphql(QueryGetStudent, {
     options: {
         variables: { id: localStorage.getItem("id") }

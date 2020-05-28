@@ -15,23 +15,7 @@ class StudentList extends Component {
             currentPage: 1,
             itemsPerPage: 2
         }
-        // this.changeStatusHandler = this.changeStatusHandler.bind(this)
     }
-
-
-    // changeStatusHandler = async (id, status) => {
-    //     let jobStatusUpdate = {
-    //         appId: id,
-    //         status: status,
-    //         _id: this.props.location.state.x._id,
-    //     }
-    //     console.log("whole",this.props.location.state.x)
-    //     console.log("state",jobStatusUpdate)
-    //     await this.props.updateJobStatus(jobStatusUpdate,res=>{
-    //         console.log(res)
-    //     })
-    // }
-
     
     handleClick(e) {
         console.log(e)
@@ -118,12 +102,6 @@ class StudentList extends Component {
                                                 <h4 className="card-subtitle mb-2 text-muted">School Name : {x.studentId.schoolName}</h4>
                                                 <h4 className="card-subtitle mb-2 text-muted">Major : {x.studentId.major}</h4></Link>
                                         </div>
-                                        {/* <h5>Update Job Status : </h5>
-                                        <div class="btn-group" role="group" style={{ alignItems: "center" }} >
-                                            <button onClick={() => { this.changeStatusHandler(x._id, "Pending") }}>Pending </button>
-                                            <button onClick={() => { this.changeStatusHandler(x._id, "Reviewed") }}>Reviewed </button>
-                                            <button onClick={() => { this.changeStatusHandler(x._id, "Declined") }}>Declined</button>
-                                        </div> */}
                                     </div>
                                     <br></br> <br></br>
                                 </MDBCol>

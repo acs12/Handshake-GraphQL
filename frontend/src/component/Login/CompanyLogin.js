@@ -10,7 +10,7 @@ const jwt_decode = require('jwt-decode');
 
 
 
-//Define a Login Component
+//Define a Component
 class CompanyLogin extends Component {
     //call the constructor method
     constructor(props) {
@@ -39,8 +39,6 @@ class CompanyLogin extends Component {
 
     //submit Login handler to send a request to the node backend
     submitCompanyLogin = async (e) => {
-        // var headers = new Headers();
-        //prevent page from refresh
         e.preventDefault();
         let mutationResponse = await this.props.CompanyLoginMutation({
             variables: {
@@ -111,7 +109,6 @@ class CompanyLogin extends Component {
                                     className="form-control"
                                     name="email"
                                     placeholder="email"
-                                    // pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                                     required
                                     autoFocus
                                 />
@@ -154,5 +151,6 @@ class CompanyLogin extends Component {
         )
     }
 }
-//export Login Component
+//export Component
+
 export default graphql(CompanyLoginMutation, { name: "CompanyLoginMutation" })(CompanyLogin);

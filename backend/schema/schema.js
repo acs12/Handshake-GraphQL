@@ -1,5 +1,4 @@
 const graphql = require('graphql');
-// const User = require("../dbSchema/users");
 const Student = require("../models/students")
 const Company = require("../models/company")
 const Jobs = require("../models/job")
@@ -95,13 +94,6 @@ const JobType = new GraphQLObjectType({
     description: { type: GraphQLString },
     category: { type: GraphQLString },
     application: { type: GraphQLList(applicationType) }
-    // application: [
-    //     {
-    //         studentId: { type: GraphQLID },
-    //         status: { type: GraphQLString },
-    //         applicationDate : { type: GraphQLString }
-    //     }
-    // ]
   })
 });
 
@@ -109,7 +101,6 @@ const CompanyJobType = new GraphQLObjectType({
   name: 'CompanyJobType',
   fields: () => ({
     _id: { type: GraphQLID },
-    // student : {type : StudentType},
     companyId: { type: GraphQLID },
     title: { type: GraphQLString },
     location: { type: GraphQLString },
@@ -179,7 +170,6 @@ const RootQuery = new GraphQLObjectType({
     },
     AllStudents: {
       type: Response,
-      // args: { id: { type: GraphQLString } },
       async resolve(parent, args) {
         let students = await Student.find();
         if (students) {
@@ -295,7 +285,6 @@ const Mutation = new GraphQLObjectType({
     AddJob: {
       type: Response,
       args: {
-        // id: { type: GraphQLID },
         companyId: { type: GraphQLString },
         title: { type: GraphQLString },
         location: { type: GraphQLString },
@@ -376,56 +365,3 @@ module.exports = new GraphQLSchema({
   query: RootQuery,
   mutation: Mutation
 });
-
-// const typeDefs = gql`
-
-// type jobs {
-//   companyId : Id!,
-//   title : String!,
-//   location : String!,
-//   postedDate :  Date!,
-//   deadlineDate : Date!,
-//   salary : Number!,
-//   category : String!
-//   application : Array!
-// }
-
-// input Login {
-//     email : String!,
-//     password : String!
-//  }
-
-// input StudentSignup{
-//   name : String!,
-//   email : String!,
-//   password : String!
-// }
-
-//  input CompanySignup{
-//    name : String!,
-//    email : String!,
-//    password : String!,
-//    location " String!
-//  }
-
-//  type Query{
-//    getJobs(id : String!) : [jobs]
-//  }`;
-
-// const resolvers = {
-//   Query: {
-//     async getJobs(root,{
-//       input
-//     }) {
-//       return await Jobs.find({
-//         "application.studentId" : {$nin : [input.id]}
-//       });
-//     },
-//   }
-// }
-
-// const server = new ApolloServer({ typeDefs, resolvers });
-// server.listen().then(({ url }) => {
-//   console.log(`🚀  Server ready at ${url}`);
-// });
-

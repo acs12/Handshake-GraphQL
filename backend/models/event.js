@@ -3,7 +3,6 @@ var ObjectId = mongoose.Schema.Types.ObjectId;
 
 
 const eventSchema = mongoose.Schema({
-    // _id: mongoose.Schema.Types.ObjectId,
     companyId : {type : ObjectId, ref : "Company" },
     name : {type : String, required : true},
     date: Date,

@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import '../../App.css';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router';
-import {  getEventsById } from '../../redux'
-import { connect } from 'react-redux'
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import CompanyEventBar from '../LandingPage/CompanyEventBar'
 

@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import '../../App.css';
 import { MDBContainer } from "mdbreact";
-// import { companySendsMessage } from '../../redux'
-// import { connect } from 'react-redux'
 
 
 class PreviousChat extends Component {
@@ -49,6 +47,4 @@ class PreviousChat extends Component {
     }
 }
 
-
-//export Login Component
 export default PreviousChat;

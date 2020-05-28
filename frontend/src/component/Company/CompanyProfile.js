@@ -72,7 +72,6 @@ class CompanyProfile extends Component {
             this.setState({
                 companyDetailsStatus: !this.state.companyDetailsStatus,
                 flag: false
-                // data : this.props.data.Student
             })
         }
 
@@ -182,7 +181,6 @@ class CompanyProfile extends Component {
                                 type="email"
                                 className="form-control"
                                 name="email"
-                                // pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                                 value={this.state.email}
                                 placeholder="Enter Email-ID"
                             />

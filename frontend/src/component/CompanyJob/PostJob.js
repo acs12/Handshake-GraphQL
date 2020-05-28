@@ -51,7 +51,6 @@ class PostJob extends Component {
         console.log("Done with updation",update)
         if(update.data.AddJob.status === "200"){
             alert("Job Added");
-        //    <Redirect to="../CViewJob"></Redirect>
         }
     }
 

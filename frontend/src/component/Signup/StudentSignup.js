@@ -6,8 +6,6 @@ import { MDBContainer, MDBCol } from "mdbreact";
 import { graphql } from 'react-apollo';
 import { StudentSignupMutation } from '../../mutation/mutation';
 
-
-//Define a Login Component
 class StudentSignup extends Component {
     //call the constructor method 
     constructor(props) {
@@ -112,7 +110,6 @@ class StudentSignup extends Component {
                                     name="email"
                                     placeholder="email"
                                     required
-                                    // pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                                 />
                             </div>
 
@@ -166,6 +163,4 @@ class StudentSignup extends Component {
     }
 }
 
-
-//export Login Component
 export default  graphql(StudentSignupMutation, { name: "StudentSignupMutation" })(StudentSignup);

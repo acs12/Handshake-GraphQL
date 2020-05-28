@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-// import {Redirect} from 'react-router';
 import { MDBContainer, MDBCol } from "mdbreact";
 
 //create the Navbar Component

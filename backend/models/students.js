@@ -2,8 +2,7 @@ const mongoose = require('mongoose');
 var ObjectId = mongoose.Schema.Types.ObjectId;
 
 const studentSchema = mongoose.Schema({
-    // _id: mongoose.Schema.Types.ObjectId,
-    name : {type : String, required : true},
+        name : {type : String, required : true},
     email : {type : String, required : true},
     phoneNumber: String,
     dateOfBirth : String,

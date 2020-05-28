@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import '../../App.css';
-import axios from 'axios';
-import { updateEducation, deleteEducation } from '../../redux'
-import { connect } from 'react-redux'
 import { Redirect } from 'react-router';
 
 
-//Define a Login Component
+//Define a Component
 class EditEducation extends Component {
     //call the constructor method
     constructor(props) {
@@ -216,5 +213,6 @@ class EditEducation extends Component {
         )
     }
 }
-//export Login Component
+//export Component
+
 export default connect(null, { updateEducation, deleteEducation })(EditEducation);

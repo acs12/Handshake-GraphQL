@@ -1,6 +1,5 @@
 const Student = require("../models/students");
 const Jobs = require("../models/job");
-// const passwordHash = require('password-hash');
 const jwt = require('jsonwebtoken');
 const { secret } = require('../config');
 

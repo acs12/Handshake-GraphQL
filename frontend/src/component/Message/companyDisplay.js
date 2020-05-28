@@ -3,9 +3,6 @@ import '../../App.css';
 import PreviosChat from './previousChat'
 import { MDBContainer, MDBCol } from "mdbreact";
 import { Redirect } from 'react-router';
-import { companySendsMessage } from '../../redux'
-import { connect } from 'react-redux'
-
 
 class CompanyDisplay extends Component {
     //call the constructor method
@@ -32,7 +29,6 @@ class CompanyDisplay extends Component {
         })
     }
     chat = async (id) => {
-        // e.preventDefault()
         let data = {
             _id: this.state.id,
             id: id,
@@ -97,10 +93,6 @@ class CompanyDisplay extends Component {
         if (this.state.data !== undefined) {
             chats = this.state.data.map(x => <PreviosChat key={x._id} item={x}></PreviosChat>)
         }
-
-        // if(this.props.item._id === this.state.id){
-        //     chatWindow ==
-        // }
 
         if (this.state.toggle === false) {
             console.log("inside if in job details", this.state.name)
@@ -177,5 +169,6 @@ class CompanyDisplay extends Component {
 }
 
 
-//export Login Component
+//export Component
+
 export default connect(null, { companySendsMessage })(CompanyDisplay);

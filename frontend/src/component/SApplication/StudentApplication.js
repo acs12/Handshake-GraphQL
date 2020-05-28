@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import '../../App.css';
-import axios from 'axios';
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import NavbarJob from '../LandingPage/NavbarJob';
 import { graphql, compose } from 'react-apollo';
@@ -24,10 +23,6 @@ class StudentApplication extends Component {
             currentPage: 1,
             itemsPerPage: 2
         }
-        //Bind the handlers to this class
-        // this.changePendingStatus = this.changePendingStatus.bind(this)
-        // this.changeReviewedStatus = this.changeReviewedStatus.bind(this)
-        // this.changeDeclinedStatus = this.changeDeclinedStatus.bind(this)
     }
 
 

@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import '../../App.css';
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
-import axios from 'axios';
-
 import { Redirect } from 'react-router';
 
 
-//Define a Login Component
+//Define a Component
 class StudentDetailsHome extends Component {
 
     constructor(props) {
@@ -134,5 +132,6 @@ class StudentDetailsHome extends Component {
         )
     }
 }
-//export Login Component
+//export Component
+
 export default StudentDetailsHome;

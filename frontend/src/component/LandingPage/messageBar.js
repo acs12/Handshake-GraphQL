@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { MDBContainer, MDBCol } from "mdbreact";
-// import {Redirect} from 'react-router';
 
 //create the Navbar Component
 class MessageBar extends Component {

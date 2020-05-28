@@ -6,7 +6,7 @@ import { graphql, compose } from 'react-apollo';
 import { QueryAllJobs } from '../../queries/queries';
 import NavbarJob from "../LandingPage/NavbarJob";
 
-//Define a Login Component
+//Define a Component
 class StudentJob extends Component {
     //call the constructor method
     constructor(props) {
@@ -144,7 +144,8 @@ class StudentJob extends Component {
 }
 
 
-//export Login Component
+//export Component
+
 export default compose(graphql(QueryAllJobs, {
     options: {
         variables: { id: localStorage.getItem("id") }

@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import '../../App.css';
-import axios from 'axios';
-import { deleteSkill } from '../../redux'
-import { connect } from 'react-redux'
 import { Redirect } from 'react-router';
 
-//Define a Login Component
+//Define a Component
 class EditSkill extends Component {
     //call the constructor method
     constructor(props) {
@@ -17,7 +14,6 @@ class EditSkill extends Component {
             existingSkillStatus: false,
             skillId: this.props.item._id,
             skillName: this.props.item.skillName,
-            // response: ""
         }
         //Bind the handlers to this class
         this.delete = this.delete.bind(this)
@@ -102,5 +98,6 @@ class EditSkill extends Component {
         )
     }
 }
-//export Login Component
+//export Component
+
 export default connect(null, { deleteSkill })(EditSkill);

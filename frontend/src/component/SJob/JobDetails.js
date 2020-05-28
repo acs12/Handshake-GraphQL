@@ -8,7 +8,6 @@ import { ApplyToJobMutation } from '../../mutation/mutation';
 import { QueryAllJobs } from '../../queries/queries';
 
 
-//Define a Login Component
 class JobDetails extends Component {
     //call the constructor method
     constructor(props) {
@@ -25,36 +24,9 @@ class JobDetails extends Component {
             deadlineDate: this.props.item.deadlineDate,
             response: ""
         }
-
-        // this.changeHandler = this.changeHandler.bind(this)
-        // this.changeJobDetailsStatus = this.changeJobDetailsStatus.bind(this)
-        // this.changeDisplay = this.changeDisplay.bind(this)
         this.apply = this.apply.bind(this)
 
     }
-
-    // apply = async (e) => {
-    //     e.preventDefault()
-    //     let apply = {
-    //         studentId: this.state.id,
-    //         _id: this.state.jobId,
-    //         resumeUrl: this.state.resumeUrl
-    //     }
-    //     // set the with credentials to true
-    //     // axios.defaults.withCredentials = true;
-    //     // // make a post request with the user data
-    //     // await this.props.applyToJob(apply, res => {
-    //     //     console.log('Response : ', res.data)
-    //     // })
-    // }
-
-    // changeHandler = (e) => {
-    //     console.log("event", e)
-    //     this.setState({
-    //         resumeUrl: e.target.files[0]
-    //     })
-    //     console.log("Resume", this.state.resumeUrl)
-    // }
 
     apply = async (e) => {
         console.log("Jobid", this.props.item._id)
@@ -63,26 +35,8 @@ class JobDetails extends Component {
                 jobId: this.props.item._id,
                 studentId: localStorage.getItem("id")
             },
-            // refetchQueries: [{ query: QueryAllJobs }]
         });
         window.location.reload()
-        // let result = mutationResponse.data;
-        // console.log("result",result)
-        // if (result) {
-        //     console.log("Response",result)
-        //     if (result.status === "200") {
-        //         this.setState({
-        //             success: true,
-        //             response: result.message,
-        //             loginFlag : true
-        //         });
-        //     } else {
-        //         this.setState({
-        //             response: result.message,
-        //             loginFlag : true
-        //         });
-        //     }
-        // }
     }
 
     changeJobDetailsStatus = (e) => {
@@ -194,8 +148,6 @@ class JobDetails extends Component {
     }
 }
 
-
-//export Login Component
 export default compose(graphql(ApplyToJobMutation,
     {
         name: "ApplyToJobMutation",

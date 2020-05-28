@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import '../../App.css';
 import { Redirect } from 'react-router';
 import Display from './display'
-import { allStudents } from '../../redux'
-import { connect } from 'react-redux'
 import MessageBar from '../LandingPage/messageBar'
 
-//Define a Login Component
+//Define a Component
 class Message extends Component {
     //call the constructor method
     constructor(props) {
@@ -52,7 +50,6 @@ class Message extends Component {
         let chat = null
         let redirectVar = null
         let bar = null
-        // console.log("_id", this.state.jobId)
         console.log("Students", this.state.getStudents)
         if (localStorage.getItem("type") === "student") {
             bar = <MessageBar></MessageBar>
@@ -75,6 +72,4 @@ class Message extends Component {
     }
 }
 
-
-//export Login Component
 export default connect(null, { allStudents })(Message);

@@ -6,8 +6,6 @@ import { MDBContainer, MDBCol } from "mdbreact";
 import { graphql } from 'react-apollo';
 import { CompanySignupMutation } from '../../mutation/mutation';
 
-
-//Define a Login Component
 class CompanySignup extends Component {
     //call the constructor method
     constructor(props) {
@@ -160,5 +158,5 @@ class CompanySignup extends Component {
         )
     }
 }
-//export Login Component
+
 export default  graphql(CompanySignupMutation, { name: "CompanySignupMutation" })(CompanySignup);

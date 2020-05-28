@@ -20,7 +20,6 @@ import EventDetails from './SEvents/EventDetails';
 import NavbarEvent from './LandingPage/NavbarEvent';
 import StudentEvent from './SEvents/StudentEvent';
 import RegisteredEvent from './SEvents/RegisteredEvent';
-//
 import CompanyJobBar from './LandingPage/CompanyJobBar'
 import CViewJob from './CompanyJob/CViewJob'
 import StudentList from './CompanyJob/StudentList'
@@ -30,7 +29,6 @@ import CViewEvent from './CompanyEvent/CViewEvent'
 import StudentListEvent from './CompanyEvent/StudentListEvent'
 import PostEvent from './CompanyEvent/PostEvent'
 import CompanyProfile from './Company/CompanyProfile'
-//
 import Message from './Message/companyMessage'
 import MessageFromCompany from './Message/messageFromCompany'
 

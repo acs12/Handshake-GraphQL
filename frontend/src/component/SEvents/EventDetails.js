@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import '../../App.css';
 import { MDBContainer, MDBCol } from "mdbreact";
 import { Link } from 'react-router-dom';
-import { applyToEvent } from '../../redux'
-import { connect } from 'react-redux'
 import { Redirect } from 'react-router';
 
 class EventDetails extends Component {

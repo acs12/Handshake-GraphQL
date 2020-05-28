@@ -1,3 +1,0 @@
-export const STUDENT_SIGNUP = "STUDENT_SIGNUP"
-export const STUDENT_LOGIN = "STUDENT_LOGIN"
-export const ALL_STUDENTS = "ALL_STUDENTS"

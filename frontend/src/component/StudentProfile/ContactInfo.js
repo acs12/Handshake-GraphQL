@@ -7,7 +7,7 @@ import { QueryGetStudent } from '../../queries/queries';
 
 
 
-//Define a Login Component
+//Define a Component
 class ContactInfo extends Component {
     //call the constructor method
     constructor(props) {
@@ -109,10 +109,8 @@ class ContactInfo extends Component {
                         type="text"
                         className="form-control"
                         name="email"
-                        // value={res.email}
                         required
                         autoFocus
-                        // pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                         placeholder="Enter New Email"
                     />
                 </div>
@@ -123,7 +121,6 @@ class ContactInfo extends Component {
                         type="Number"
                         min="0"
                         max="999999999999"
-                        // value={res.phoneNumber}
                         className="form-control"
                         name="phoneNumber"
                         placeholder="Enter Phone Number"
@@ -144,7 +141,8 @@ class ContactInfo extends Component {
     }
 }
 
-//export Login Component
+//export Component
+
 export default compose(graphql(QueryGetStudent, {
     options: {
         variables: { id: localStorage.getItem("id") }

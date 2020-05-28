@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import '../../App.css';
 
-
-
-
-//Define a Login Component
 class CompanyDetails extends Component {
     //call the constructor method
    
@@ -33,5 +29,4 @@ class CompanyDetails extends Component {
         )
     }
 }
-//export Login Component
 export default CompanyDetails;

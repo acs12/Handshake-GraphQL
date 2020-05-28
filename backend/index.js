@@ -1,4 +1,3 @@
-// const process = require("./nodemon.json")
 const express = require('express');
 const mongoose = require('mongoose');
 var graphqlHTTP = require('express-graphql');
@@ -6,9 +5,6 @@ var app = express();
 var bodyParser = require('body-parser');
 var session = require('express-session');
 const schema = require('./schema/schema')
-// const multer = require('multer');
-// var path = require('path');
-// const bcrypt = require("bcrypt");
 var cookieParser = require('cookie-parser');
 var cors = require('cors');
 const { mongoDB } = require('./config');
@@ -68,78 +64,3 @@ app.use("/graphql",graphqlHTTP({
 app.listen(3001, ()=>{
   console.log("GraphQL server started on port 3001");
 })
-
-// Construct a schema, using GraphQL schema language
-// var schema = buildSchema(`
-//   type Query {
-//     hello: String
-//   }
-// `);
-
-// // The root provides a resolver function for each API endpoint
-// var root = {
-//     hello: () => {
-//       return 'Hello world!';
-//     },
-//   };
-
-// app.use("/graphql",graphqlHTTP({
-//     schema : schema,
-//     // rootValue : root,
-//     graphiql : true
-// }))
-
-// app.listen(3001, () => { console.log('Server is running on port 3001') });
-
-// const typeDefs = gql`
-
-// type jobs {
-//   companyId : Id!,
-//   title : String!,
-//   location : String!,
-//   postedDate :  Date!,
-//   deadlineDate : Date!,
-//   salary : Number!,
-//   category : String!
-//   application : Array!
-// }
-
-// input Login {
-//     email : String!,
-//     password : String!
-//  }
- 
-// input StudentSignup{
-//   name : String!,
-//   email : String!,
-//   password : String!
-// }
-
-//  input CompanySignup{
-//    name : String!,
-//    email : String!,
-//    password : String!,
-//    location " String!
-//  }
- 
-//  type Query{
-//    getJobs(input : id) : [jobs]
-//  }
-//  `;
-
-// const resolvers = {
-//   Query: {
-//     async getJobs(root,{
-//       input
-//     }) {
-//       return await Jobs.find({
-//         "application.studentId" : {$nin : [input.id]}
-//       });
-//     },
-//   }
-// }
-
-// const server = new ApolloServer({ typeDefs, resolvers });
-// server.listen().then(({ url }) => {
-//   console.log(`🚀  Server ready at ${url}`);
-// });

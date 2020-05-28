@@ -7,7 +7,7 @@ import { Redirect } from 'react-router';
 
 
 
-//Define a Login Component
+//Define a Component
 class AllStudentHome extends Component {
 
 
@@ -31,5 +31,6 @@ class AllStudentHome extends Component {
         )
     }
 }
-//export Login Component
+//export Component
+
 export default AllStudentHome;

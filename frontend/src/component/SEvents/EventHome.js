@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import '../../App.css';
 import { Container, Row, Col } from 'react-bootstrap';
-
 import { Redirect } from 'react-router';
 import StudentEvent from './StudentEvent'
 
 
-
-//Define a Login Component
 class EventHome extends Component {
 
 
@@ -31,5 +28,4 @@ class EventHome extends Component {
         )
     }
 }
-//export Login Component
 export default EventHome;

@@ -1,4 +1,3 @@
-const Student = require("../models/students");
 const Company = require("../models/company");
 const Jobs = require("../models/job");
 const jwt = require('jsonwebtoken');
