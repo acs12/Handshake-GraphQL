@@ -1,45 +1,72 @@
-**Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**
+# Simulation of Handshake Using GraphQL
 
-When you're done, you can delete the content in this README and update the file with details for others getting started with your repository.
+Simulation of Handshake is the replica of the website named Handshake. All the services offered by the Handshake for student and company is achieved in this project using GraphQL(Data query and manipulation language).
 
-*We recommend that you open this README in another tab as you perform the tasks below. You can [watch our video](https://youtu.be/0ocf7u76WSo) for a full demo of all the steps in this tutorial. Open the video in a new tab to avoid leaving Bitbucket.*
+## Architecture Diagram
+![image](https://user-images.githubusercontent.com/46435796/83484849-b510a400-a45a-11ea-858c-c80cb3708c00.png)
 
----
+## Getting Started
 
-## Edit a file
+Clone code from the master branch and extract files on your local computer.
 
-You’ll start by editing this README file to learn how to edit a file in Bitbucket.
+### Prerequisites
 
-1. Click **Source** on the left side.
-2. Click the README.md link from the list of files.
-3. Click the **Edit** button.
-4. Delete the following text: *Delete this line to make a change to the README from Bitbucket.*
-5. After making your change, click **Commit** and then **Commit** again in the dialog. The commit page will open and you’ll see the change you just made.
-6. Go back to the **Source** page.
+You need to have NodeJS and NPM(Node Package Manager) installed on your local device to succesfully run this project.
 
----
+Node can be installed through this website[https://phoenixnap.com/kb/install-node-js-npm-on-windows]
+Node can also be installed through NVM.
+```
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
+```
 
-## Create a file
+### Installing
 
-Next, you’ll add a new file to this repository.
+A step by step series of examples that tell you how to get a development env running
 
-1. Click the **New file** button at the top of the **Source** page.
-2. Give the file a filename of **contributors.txt**.
-3. Enter your name in the empty file space.
-4. Click **Commit** and then **Commit** again in the dialog.
-5. Go back to the **Source** page.
+Clone repository on your local computer.
+Traverse through the Backend folder, open terminal in this folder and enter
+```
+npm install
+```
+This will download all the dependencies required for the project.
+After Installing all the dependencies enter
+```
+node index.js
+```
+"index.js" is our root file which will create connection with database and handle all the APIs
 
-Before you move on, go ahead and explore the repository. You've already seen the **Source** page, but check out the **Commits**, **Branches**, and **Settings** pages.
+Travser to Frontend folder and again install the dependencies by entering
+```
+npm install
+```
+After Installing all the dependencies enter
+```
+npm start
+```
+It will start our frontend server which is in React.
+Everything is set and you are good to go.
 
----
+## Running the tests
 
-## Clone a repository
+To run test for this system.
+Traverse to test folder in Backend and enter
+```
+npm test
+```
+This will run the tests defined in the file.
+You can add new Tests by adding test cases in this file.
 
-Use these steps to clone from SourceTree, our client for using the repository command-line free. Cloning allows you to work on your files locally. If you don't yet have SourceTree, [download and install first](https://www.sourcetreeapp.com/). If you prefer to clone from the command line, see [Clone a repository](https://confluence.atlassian.com/x/4whODQ).
+## Deployment
 
-1. You’ll see the clone button under the **Source** heading. Click that button.
-2. Now click **Check out in SourceTree**. You may need to create a SourceTree account or log in.
-3. When you see the **Clone New** dialog in SourceTree, update the destination path and name if you’d like to and then click **Clone**.
-4. Open the directory you just created to see your repository’s files.
+To deploy this on live system go to aws.amazon.com and follow the steps to instantiate EC2 instance.
 
-Now that you're more familiar with your Bitbucket repository, go ahead and add a new file locally. You can [push your change back to Bitbucket with SourceTree](https://confluence.atlassian.com/x/iqyBMg), or you can [add, commit,](https://confluence.atlassian.com/x/8QhODQ) and [push from the command line](https://confluence.atlassian.com/x/NQ0zDQ).
+## Built With
+
+* [React](https://reactjs.org/docs/getting-started.html) - The library used
+* [GraphQL](https://graphql.org/learn/) - An open-source data query and manipulation language
+* [NodeJS](https://nodejs.org/en/docs/) - run time open source development platform
+* [MongoDB](https://dev.mysql.com/doc/) - Database used
+
+## Author
+
+* **Aayush Sukhadia**
